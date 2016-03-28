@@ -16,12 +16,12 @@ app.factory('SalespersonFactory', function($http) {
 			});
 		},
 
-		createPerson: function(name, regions) {
-			return $http.post('/api/salesperson', {name: name, regions: regions});
+		createPerson: function(person) {
+			return $http.post('/api/salesperson', person);
 		},
 
 		updateRegions: function(person) {
-			return $http.put('/api/salesperson/' + person._id, person.regions);
+			return $http.put('/api/salesperson/' + person._id, person);
 		},
 
 		deletePerson: function(id) {

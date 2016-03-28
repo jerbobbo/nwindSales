@@ -1,0 +1,13 @@
+body {
+	font-family: 'Roboto Condensed', sans-serif;
+  font-size: 16px;
+}
+
+.panel-heading.green {
+	background-color: #89F78D;
+}
+
+.panel-heading.red {
+	background-color: #F77975;
+}
+

@@ -2,31 +2,49 @@
 <html>
 <head>
 	<link href = "/vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:300,200' rel='stylesheet' type='text/css'>
+	<link href = "/stylesheets/style.css" rel="stylesheet" />
+
 	<title>NorthWind Salespeople</title>
 </head>
 <body>
 <div class = 'container' ng-app="myApp">
 	<h2>NorthWind Sales Team</h2>
 	<div class = 'row'>
-		<div class="col-sm-10" ng-controller="SalespersonCtrl">
-
+		<div class="col-sm-12" ng-controller="SalespersonCtrl">
 			<div class = "row">
-				<div class = "col-sm-6">
-					<form>
-						<div class="form-group">
-							<label for="newSalesPerson">Enter New Salesperson</label>
-							<input type="text" class="form-control" id="newSalesPerson" placeholder="Employee Name">
-						</div>
-						<div class="form-group">
-							<button ng-repeat="region in regions" class="btn btn-default">{{ region }}</button>
-							<button class="btn btn-primary pull-right">Submit</button>
 
+				<div class = "col-sm-4">
+					<div class ="panel panel-default">
+						<div class="panel-heading">Enter New Salesperson</div>
+						<form>
+							<div class="form-group">
+								<input type="text" class="form-control" id="newSalesPerson" ng-model="newPerson.name" placeholder="Employee Name">
+							</div>
+							<div class="form-group">
+								<button ng-repeat="region in regions" class="btn btn-default" ng-class="{ 'btn-info': newPerson.regions[region] }" ng-click="newPersonToggle(newPerson, region)" ng-disabled="maxRegions(newPerson, region)">{{ region }}</button>
+								<button ng-disabled="!newPerson.name || !newPerson.regions" class="btn btn-primary pull-right" ng-click="addPerson()">Add</button>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div class ="col-sm-8">
+					<div class="row">
+						<div class = "col-sm-6" ng-repeat="person in salesPeople">
+							<div class ="panel panel-default">
+								<div class="panel-heading" ng-class="{ green: person.numRegions === 3, red: person.numRegions === 0 }">{{person.name}}</div>
+								
+									<div class="panel-body">
+										<button ng-repeat="region in regions" class="btn btn-default" ng-disabled="maxRegions(person, region)" ng-class="{ 'btn-info': person.regions[region] }" ng-click="updateRegions(person, region)">{{ region }}</button>
+										<button class="btn btn-danger pull-right" ng-disabled="person.numRegions !== 0" ng-click="deletePerson(person)">Delete</button>
+									</div>
+
+							</div>
 						</div>
-					</form>
+					</div>
 				</div>
 			</div>
-		{{ salesPeople }}
-
 		</div>
 	</div>
 </div>
