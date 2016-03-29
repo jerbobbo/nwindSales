@@ -13,7 +13,8 @@ app.controller('SalespersonCtrl', function($scope, SalespersonFactory){
 	}
 
 	$scope.maxRegions = function(person, region) {
-		return person.numRegions === 3 && !person.regions[region];
+		if (person)
+			return person.numRegions === 3 && !person.regions[region];
 	};
 
 	$scope.regionToggle = function(person, region) {

@@ -16,14 +16,14 @@
 
 				<div class = "col-sm-4">
 					<div class ="panel panel-default">
-						<div class="panel-heading">Enter New Salesperson</div>
+						<div class="panel-heading" ng-class="{ green: newPerson.numRegions ===3 }">Enter New Salesperson</div>
 						<form>
 							<div class="form-group">
 								<input type="text" class="form-control" id="newSalesPerson" ng-model="newPerson.name" placeholder="Employee Name">
 							</div>
 							<div class="form-group">
 								<button ng-repeat="region in regions" class="btn btn-default" ng-class="{ 'btn-info': newPerson.regions[region] }" ng-click="newPersonToggle(newPerson, region)" ng-disabled="maxRegions(newPerson, region)">{{ region }}</button>
-								<button ng-disabled="!newPerson.name || !newPerson.regions" class="btn btn-primary pull-right" ng-click="addPerson()">Add</button>
+								<button ng-disabled="!newPerson.name || !newPerson.numRegions" class="btn btn-primary pull-right" ng-click="addPerson()">Add</button>
 							</div>
 						</form>
 					</div>
