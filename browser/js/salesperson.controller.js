@@ -1,19 +1,23 @@
 app.controller('SalespersonCtrl', function($scope, SalespersonFactory){
 
-	function loadSalesPeople() {
-		SalespersonFactory.fetchAll()
-		.then(function(people) {
-			$scope.salesPeople = people;
+  function setSalesPerson(){
 			$scope.newPerson = {
 				name: null,
 				numRegions: 0,
 				regions: {}
-			};
+			}
+  }
+
+	function loadSalesPeople() {
+    setSalesPerson();
+		SalespersonFactory.fetchAll()
+		.then(function(people) {
+			$scope.salesPeople = people;
 		});
 	}
 
 	$scope.maxRegions = function(person, region) {
-		if (person)
+		if (person)//why would I not have a person?
 			return person.numRegions === 3 && !person.regions[region];
 	};
 

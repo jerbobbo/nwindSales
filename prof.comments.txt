@@ -1,0 +1,3 @@
+- good work
+- clean code
+- if you stored the regions as an array of strings, I think you're code would be tighter- I'm not crazy about how the model was set up regions: {}

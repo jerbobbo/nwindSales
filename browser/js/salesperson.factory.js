@@ -17,15 +17,15 @@ app.factory('SalespersonFactory', function($http) {
 		},
 
 		createPerson: function(person) {
-			return $http.post('/api/salesperson', person);
+			return $http.post('/api/salespersons', person);
 		},
 
 		updateRegions: function(person) {
-			return $http.put('/api/salesperson/' + person._id, person);
+			return $http.put('/api/salespersons/' + person._id, person);
 		},
 
 		deletePerson: function(id) {
-			return $http.delete('/api/salesperson/' + id);
+			return $http.delete('/api/salespersons/' + id);
 		}
 
 

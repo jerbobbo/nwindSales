@@ -11,10 +11,14 @@ app.use(express.static(path.join(__dirname, '/browser')));
 
 app.use(bodyParser.json());
 
+app.get('/', function(req, res, next) {
+	res.send('index.html');
+});
+
 app.use('/', function(err, req, res, next) {
 	res.send(err);
 });
 
-app.use(require('./routes'));
+app.use('/api/salespersons', require('./routes'));
 
 module.exports = app;

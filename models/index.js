@@ -20,7 +20,7 @@ var salesPersonSchema = mongoose.Schema({
 		type: String,
 		required:true
 	},
-	regions: {}
+	regions: {}//i would rather this was an array of strings
 });
 
 var Salesperson = mongoose.model('salesperson', salesPersonSchema);
